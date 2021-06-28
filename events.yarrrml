@@ -1,0 +1,20 @@
+mappings:
+  calendar:
+    sources:
+      - [data.json~jsonpath, $]
+    s: http://example.com/calendar/$(name)
+    po:
+      - [schema:name, $(name)]
+      - p: schema:event
+        o:
+         - mapping: events
+
+  events:
+    sources:
+      - [data.json~jsonpath, "$.events[*]"]
+    s: http://example.com/event/$(title)
+    po:
+      - [a, schema:Date]
+      - [schema:name, $(title)]
+      - [schema:startDate, $(startDate)]
+      - [schema:endDate, $(endDate)]

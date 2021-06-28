@@ -1,0 +1,32 @@
+{
+  "name": "solid-store-rml",
+  "version": "0.0.1",
+  "description": "Convert a JSON representation to RDF",
+  "main": "index.js",
+  "scripts": {
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.ilabt.imec.be/KNoWS/solid-store-rml.git"
+  },
+  "author": "Friedrich Vandenberghe",
+  "license": "MIT",
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
+    "@types/chai": "^4.2.15",
+    "@types/chai-as-promised": "^7.1.4",
+    "@types/fs-extra": "^9.0.10",
+    "@types/mocha": "^8.2.2",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^8.3.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "@rmlio/rmlmapper-java-wrapper": "^2.0.0",
+    "@solid/community-server": "^0.9.0",
+    "fs-extra": "^10.0.0"
+  }
+}
