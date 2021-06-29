@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "Convert a JSON representation to RDF",
   "scripts": {
-    "build": "npm run build:ts && npm run build:components",
+    "build": "npm run build:ts && npm run build:components && npm run build:copy",
     "build:components": "componentsjs-generator -s src -c dist/components -i .componentsignore",
     "build:ts": "tsc",
+    "build:copy": "node ./copy-rmlwrapper.js",
     "prepare": "npm run build",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'"
   },
@@ -47,7 +48,6 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "config",
-    "rmlmapper.jar"
+    "config"
   ]
 }
