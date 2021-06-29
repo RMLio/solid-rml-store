@@ -21,7 +21,8 @@ chai.use(chaiAsPromised);
 const convertToRDF = async (input: any): Promise<any> => {
   const inputStream = guardedStreamFrom(JSON.stringify(input));
   const outputStream = await new JsonToRdfConverter(
-    "./test/events.rml.ttl"
+    "./test/events.rml.ttl",
+    "./rmlmapper.jar"
   ).handle({
     identifier: { path: "json" },
     representation: {
@@ -34,7 +35,9 @@ const convertToRDF = async (input: any): Promise<any> => {
   return await readableToString(outputStream.data);
 };
 
-describe("JsonToRdfConverter", () => {
+describe("JsonToRdfConverter", function () {
+  this.timeout(10000);
+
   it("Verify converter on correct input", async () => {
     const input = {
       name: "Test for Solid calendar",
@@ -111,7 +114,10 @@ describe("JsonToRdfConverter", () => {
 
     it("#4 - 400", async () => {
       await expect(
-        new JsonToRdfConverter("./test/events.rml.ttl").handle({
+        new JsonToRdfConverter(
+          "./test/events.rml.ttl",
+          "./rmlmapper.jar"
+        ).handle({
           identifier: { path: "json" },
           representation: {
             metadata: new RepresentationMetadata("json"),
