@@ -2,8 +2,11 @@
   "name": "solid-store-rml",
   "version": "0.0.1",
   "description": "Convert a JSON representation to RDF",
-  "main": "index.js",
   "scripts": {
+    "build": "npm run build:ts && npm run build:components",
+    "build:components": "componentsjs-generator -s src -c dist/components -i .componentsignore",
+    "build:ts": "tsc",
+    "prepare": "npm run build",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'"
   },
   "repository": {
@@ -27,6 +30,21 @@
   "dependencies": {
     "@rmlio/rmlmapper-java-wrapper": "^2.0.0",
     "@solid/community-server": "^0.9.0",
+    "componentsjs-generator": "^2.4.0",
     "fs-extra": "^10.0.0"
-  }
+  },
+  "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml",
+  "lsd:components": "dist/components/components.jsonld",
+  "lsd:contexts": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/solid-calendar/^0.0.0/components/context.jsonld": "dist/components/context.jsonld"
+  },
+  "lsd:importPaths": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/solid-calendar/^0.0.0/components/": "dist/components/",
+    "https://linkedsoftwaredependencies.org/bundles/npm/solid-calendar/^0.0.0/dist/": "dist/"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ]
 }

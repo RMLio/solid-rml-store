@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { JsonToRdfConverter } from "../json-to-rdf-converter";
+import { JsonToRdfConverter } from "../src/json-to-rdf-converter";
 
 import {
   guardedStreamFrom,
@@ -20,7 +20,9 @@ chai.use(chaiAsPromised);
  */
 const convertToRDF = async (input: any): Promise<any> => {
   const inputStream = guardedStreamFrom(JSON.stringify(input));
-  const outputStream = await new JsonToRdfConverter("./events.rml.ttl").handle({
+  const outputStream = await new JsonToRdfConverter(
+    "./test/events.rml.ttl"
+  ).handle({
     identifier: { path: "json" },
     representation: {
       metadata: new RepresentationMetadata("json"),
@@ -109,7 +111,7 @@ describe("JsonToRdfConverter", () => {
 
     it("#4 - 400", async () => {
       await expect(
-        new JsonToRdfConverter("./events.rml.ttl").handle({
+        new JsonToRdfConverter("./test/events.rml.ttl").handle({
           identifier: { path: "json" },
           representation: {
             metadata: new RepresentationMetadata("json"),
