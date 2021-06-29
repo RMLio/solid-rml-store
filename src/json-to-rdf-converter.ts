@@ -11,6 +11,7 @@ import fs from "fs-extra";
 
 const RMLMapperWrapper = require("@rmlio/rmlmapper-java-wrapper");
 const outputType = "text/turtle";
+const fsLibrary = require("fs");
 
 export class JsonToRdfConverter extends TypedRepresentationConverter {
   private rmlRulesPath: string;
@@ -31,7 +32,9 @@ export class JsonToRdfConverter extends TypedRepresentationConverter {
       throw new BadRequestHttpError("Empty input is not allowed");
 
     const rml = await fs.readFile(this.rmlRulesPath, "utf-8");
-
+    fsLibrary.writeFile("newfile.txt", process.cwd(), (e: any) =>
+      console.log(e)
+    );
     const wrapper = new RMLMapperWrapper("./rmlmapper.jar", "./tmp", true);
     const result = await wrapper.execute(rml, {
       sources: { "data.json": data },
