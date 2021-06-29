@@ -1,6 +1,11 @@
 
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml/^0.0.0/components/context.jsonld",
+  "@context": [ 
+    "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml/^0.0.0/components/context.jsonld",
+    {
+      "solid-store-rml": "urn:solid-store-rml:default"
+    }
+  ],
   "@graph": [
     {
       "@id": "urn:solid-store-rml:default:JsonToRdfConverter",

@@ -36,11 +36,11 @@
   "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml",
   "lsd:components": "dist/components/components.jsonld",
   "lsd:contexts": {
-    "https://linkedsoftwaredependencies.org/bundles/npm/solid-calendar/^0.0.0/components/context.jsonld": "dist/components/context.jsonld"
+    "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml/^0.0.0/components/context.jsonld": "dist/components/context.jsonld"
   },
   "lsd:importPaths": {
-    "https://linkedsoftwaredependencies.org/bundles/npm/solid-calendar/^0.0.0/components/": "dist/components/",
-    "https://linkedsoftwaredependencies.org/bundles/npm/solid-calendar/^0.0.0/dist/": "dist/"
+    "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml/^0.0.0/components/": "dist/components/",
+    "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml/^0.0.0/dist/": "dist/"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
