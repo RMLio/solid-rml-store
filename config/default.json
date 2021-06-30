@@ -8,8 +8,8 @@
   ],
   "@graph": [
     {
-      "@id": "urn:solid-store-rml:default:JsonToRdfConverter",
-      "@type": "JsonToRdfConverter"
+      "@id": "urn:solid-store-rml:default:AnyToRdfConverter",
+      "@type": "AnyToRdfConverter"
     }
   ]
 }

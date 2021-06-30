@@ -1,0 +1,12 @@
+prefixes:
+  ex: "http://example.com/"
+
+mappings:
+  movie:
+    sources:
+      - ['movies.csv~csv']
+    s: http://example.com/movie/$(slug)
+    po:
+      - [a, schema:Movie]
+      - [schema:name, $(title)]
+      - [ex:year, $(year)]

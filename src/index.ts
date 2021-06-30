@@ -1,1 +1,1 @@
-export * from "./json-to-rdf-converter";
+export * from "./any-to-rdf-converter";

@@ -24,17 +24,19 @@ Then add the following lines to your config:
   ],
 "@graph": [
     {
-      "@id": "solid-store-rml:JsonToRdfConverter",
+      "@id": "solid-store-rml:AnyToRdfConverter",
       "JsonToRdfConverter:_rmlRulesPath": [path to the rules file],
       "JsonToRdfConverter:_rmlmapperPath": [path to the jar]
     },
 ]
 ```
 
-## json-to-rdf-converter
+## any-to-rdf-converter
 
-Converts a JSON object to it's RDF representation, according to the RML defined in a given rules file. If the `rmlmapper.jar` isn't found at the given location, then the converter tries to download it to that location.  
-Beware that this jar is approx. 60MB, thus that this download can take some time.
+Converts an object to it's RDF representation, according to the RML defined in a given rules file. The `content-type` defined in the representation's metadata is used to know the type of the input data, thus this can't be `undefined`.
+
+If the `rmlmapper.jar` isn't found at the given location, then the converter tries to download it to that location.  
+Beware that this jar is approx. 60MB, thus this download can take some time.
 
 ## yarrrml
 

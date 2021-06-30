@@ -20,7 +20,7 @@ const RMLMAPPER_LATEST = {
   path: "/repos/rmlio/rmlmapper-java/releases/latest",
 };
 
-export class JsonToRdfConverter extends TypedRepresentationConverter {
+export class AnyToRdfConverter extends TypedRepresentationConverter {
   private rmlRulesPath: string;
   private rmlmapperPath: string;
 
@@ -35,6 +35,9 @@ export class JsonToRdfConverter extends TypedRepresentationConverter {
     identifier,
     representation,
   }: RepresentationConverterArgs): Promise<Representation> {
+    if (representation.metadata.contentType === undefined)
+      throw new InternalServerError("Content type can't be undefined");
+
     const data = await readableToString(representation.data);
 
     if (!data.trim().length)
@@ -46,7 +49,7 @@ export class JsonToRdfConverter extends TypedRepresentationConverter {
 
     const wrapper = new RMLMapperWrapper(this.rmlmapperPath, "./tmp", true);
     const result = await wrapper.execute(rml, {
-      sources: { "data.json": data },
+      sources: { [`data.${representation.metadata.contentType}`]: data },
       generateMetadata: false,
       serialization: "turtle",
     });
