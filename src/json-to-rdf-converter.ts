@@ -13,11 +13,12 @@ import { https } from "follow-redirects";
 
 const RMLMapperWrapper = require("@rmlio/rmlmapper-java-wrapper");
 const outputType = "text/turtle";
+
+// Url to the latest release of rmlmapper.jar
 const RMLMAPPER_LATEST = {
   host: "api.github.com",
   path: "/repos/rmlio/rmlmapper-java/releases/latest",
 };
-// "https://api.github.com/repos/rmlio/rmlmapper-java/releases/latest";
 
 export class JsonToRdfConverter extends TypedRepresentationConverter {
   private rmlRulesPath: string;
@@ -60,6 +61,10 @@ export class JsonToRdfConverter extends TypedRepresentationConverter {
     );
   }
 
+  /**
+   * Tries to download the latest release to the given path
+   * @returns Promise of the GET
+   */
   _download() {
     return new Promise((resolve) => {
       https
