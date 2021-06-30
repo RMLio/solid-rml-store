@@ -4,7 +4,7 @@ prefixes:
 mappings:
   movie:
     sources:
-      - ['movies.csv~csv']
+      - ['data.csv~csv']
     s: http://example.com/movie/$(slug)
     po:
       - [a, schema:Movie]

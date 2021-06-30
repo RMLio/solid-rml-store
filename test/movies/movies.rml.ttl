@@ -39,5 +39,5 @@ map:rules_000 a <http://rdfs.org/ns/void#Dataset>;
 map:s_000 a rr:SubjectMap;
     rr:template "http://example.com/movie/{slug}".
 map:source_000 a rml:LogicalSource;
-    rml:source "movies.csv";
+    rml:source "data.csv";
     rml:referenceFormulation ql:CSV.

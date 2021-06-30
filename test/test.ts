@@ -67,23 +67,20 @@ describe("JsonToRdfConverter", function () {
 
     it("#2 - csv", async () => {
       const expectedResult = `
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix ma: <http://www.w3.org/ns/ma-ont#>.
-@prefix schema: <http://schema.org/>.
-@prefix ex: <http://example.com/>.
+<http://example.com/movie/fotr> a <http://schema.org/Movie>;
+  <http://example.com/year> "2001";
+  <http://schema.org/name> "The Fellowship of the Ring" .
 
-<http://example.com/movie/sw> a schema:Movie;
-    schema:name "Star Wars";
-    ex:year "1977".
-<http://example.com/movie/fotr> a schema:Movie;
-    schema:name "The Fellowship of the Ring";
-    ex:year "2001".
-<http://example.com/movie/wam> a schema:Movie;
-    schema:name "We Are Marshall";
-    ex:year "2006".\n`;
+<http://example.com/movie/sw> a <http://schema.org/Movie>;
+  <http://example.com/year> "1977";
+  <http://schema.org/name> "Star Wars" .
+
+<http://example.com/movie/wam> a <http://schema.org/Movie>;
+  <http://example.com/year> "2006";
+  <http://schema.org/name> "We Are Marshall" .\n`;
 
       const outputStream = await new AnyToRdfConverter(
-        "./test/events/events.rml.ttl",
+        "./test/movies/movies.rml.ttl",
         "./rmlmapper.jar"
       ).handle({
         identifier: { path: "csv" },
