@@ -124,49 +124,6 @@ describe("JsonToRdfConverter", function () {
     });
 
     it("#2 - 500", async () => {
-      const input = [{}];
-
-      await expect(convertJsonToRDF(input))
-        .to.eventually.be.rejectedWith(
-          "Could not convert the input to valid RDF"
-        )
-        .and.be.an.instanceOf(InternalServerError);
-    });
-
-    it("#3 - 500", async () => {
-      const input = [
-        {
-          abcdef: "Random field",
-        },
-      ];
-
-      await expect(convertJsonToRDF(input))
-        .to.eventually.be.rejectedWith(
-          "Could not convert the input to valid RDF"
-        )
-        .and.be.an.instanceOf(InternalServerError);
-    });
-
-    it("#4 - 400", async () => {
-      await expect(
-        new AnyToRdfConverter(
-          "./test/events/events.rml.ttl",
-          "./rmlmapper.jar"
-        ).handle({
-          identifier: { path: "json" },
-          representation: {
-            metadata: new RepresentationMetadata("json"),
-            data: guardedStreamFrom(""),
-            binary: false,
-          },
-          preferences: {},
-        })
-      )
-        .to.eventually.be.rejectedWith("Empty input is not allowed")
-        .and.be.an.instanceOf(BadRequestHttpError);
-    });
-
-    it("#5 - 500", async () => {
       await expect(
         new AnyToRdfConverter(
           "./test/events/events.rml.ttl",
@@ -182,6 +139,25 @@ describe("JsonToRdfConverter", function () {
         })
       )
         .to.eventually.be.rejectedWith("Content type can't be undefined")
+        .and.be.an.instanceOf(InternalServerError);
+    });
+
+    it("#3 - 500", async () => {
+      await expect(
+        new AnyToRdfConverter(
+          "./test/non-existent.rml.ttl",
+          "./rmlmapper.jar"
+        ).handle({
+          identifier: { path: "json" },
+          representation: {
+            metadata: new RepresentationMetadata("json"),
+            data: guardedStreamFrom(""),
+            binary: false,
+          },
+          preferences: {},
+        })
+      )
+        .to.eventually.be.rejectedWith("RML file is not found")
         .and.be.an.instanceOf(InternalServerError);
     });
   });

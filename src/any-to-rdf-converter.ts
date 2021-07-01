@@ -13,6 +13,7 @@ import { https } from "follow-redirects";
 
 const RMLMapperWrapper = require("@rmlio/rmlmapper-java-wrapper");
 const outputType = "text/turtle";
+const FILE_NOT_FOUND = `Error: Error while executing the rules.`;
 
 // Url to the latest release of rmlmapper.jar
 const RMLMAPPER_LATEST = {
@@ -40,22 +41,34 @@ export class AnyToRdfConverter extends TypedRepresentationConverter {
 
     const data = await readableToString(representation.data);
 
-    if (!data.trim().length)
-      throw new BadRequestHttpError("Empty input is not allowed");
-
-    const rml = await fs.readFile(this.rmlRulesPath, "utf-8");
-
-    if (!fs.existsSync(this.rmlmapperPath)) await this._download();
+    let rml;
+    try {
+      rml = await fs.readFile(this.rmlRulesPath, "utf-8");
+    } catch (error) {
+      if (error.code === "ENOENT")
+        throw new InternalServerError("RML file is not found");
+      else throw error;
+    }
 
     const wrapper = new RMLMapperWrapper(this.rmlmapperPath, "./tmp", true);
-    const result = await wrapper.execute(rml, {
-      sources: { [`data.${representation.metadata.contentType}`]: data },
-      generateMetadata: false,
-      serialization: "turtle",
-    });
 
-    if (!result.output.trim().length)
-      throw new InternalServerError("Could not convert the input to valid RDF");
+    let result;
+    try {
+      result = await wrapper.execute(rml, {
+        sources: { [`data.${representation.metadata.contentType}`]: data },
+        generateMetadata: false,
+        serialization: "turtle",
+      });
+    } catch (error) {
+      if (error.toString() === FILE_NOT_FOUND) {
+        await this._download();
+        result = await wrapper.execute(rml, {
+          sources: { [`data.${representation.metadata.contentType}`]: data },
+          generateMetadata: false,
+          serialization: "turtle",
+        });
+      } else throw error;
+    }
 
     return new BasicRepresentation(
       result.output,
