@@ -1,7 +1,7 @@
 {
   "name": "solid-store-rml",
   "version": "0.0.1",
-  "description": "Convert a JSON representation to RDF",
+  "description": "Convert any representation to RDF",
   "scripts": {
     "build": "npm run build:ts && npm run build:components",
     "build:components": "componentsjs-generator -s src -c dist/components -i .componentsignore",
