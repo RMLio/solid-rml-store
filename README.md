@@ -33,11 +33,11 @@ Then add the following lines to your config:
 
 ## any-to-rdf-converter
 
-Converts an object to it's RDF representation, according to the RML defined in a given rules file. The `content-type` defined in the representation's metadata is used to know the type of the input data, thus this can't be `undefined`.
+Converts an object to its RDF representation, according to the RML defined in a given rules file. The `content-type` defined in the representation's metadata is used to know the type of the input data, thus this can't be `undefined`.
 
 If the `rmlmapper.jar` isn't found at the given location, then the converter tries to download it to that location.  
 Beware that this jar is approx. 60MB, thus this download can take some time.
 
-## yarrrml
+## YARRRML
 
-The rml rules are generated from the structure defined in the `.yarrrml` file. See [the specification](https://rml.io/yarrrml/spec/) for more information on what each field entails. [Matey](https://rml.io/yarrrml/matey/) is also a tool which can be used to generate these rules.
+The RML rules are generated from the structure defined in the `.yarrrml` file. See [the specification](https://rml.io/yarrrml/spec/) for more information on what each field entails. [Matey](https://rml.io/yarrrml/matey/) is also a tool which can be used to generate these rules.
