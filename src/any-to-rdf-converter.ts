@@ -1,5 +1,4 @@
 import {
-  BadRequestHttpError,
   BasicRepresentation,
   InternalServerError,
   NotFoundHttpError,
@@ -20,6 +19,9 @@ const RMLMAPPER_LATEST = {
   host: "api.github.com",
   path: "/repos/rmlio/rmlmapper-java/releases/latest",
 };
+
+const getSourceName = (contentType: string) =>
+  `data.${contentType.split("/")[1]}`;
 
 export class AnyToRdfConverter extends TypedRepresentationConverter {
   private rmlRulesPath: string;
@@ -55,7 +57,7 @@ export class AnyToRdfConverter extends TypedRepresentationConverter {
     let result;
     try {
       result = await wrapper.execute(rml, {
-        sources: { [`data.${representation.metadata.contentType}`]: data },
+        sources: { [getSourceName(representation.metadata.contentType)]: data },
         generateMetadata: false,
         serialization: "turtle",
       });
@@ -63,7 +65,9 @@ export class AnyToRdfConverter extends TypedRepresentationConverter {
       if (error.toString() === FILE_NOT_FOUND) {
         await this._download();
         result = await wrapper.execute(rml, {
-          sources: { [`data.${representation.metadata.contentType}`]: data },
+          sources: {
+            [getSourceName(representation.metadata.contentType)]: data,
+          },
           generateMetadata: false,
           serialization: "turtle",
         });

@@ -26,7 +26,7 @@ const convertJsonToRDF = async (input: any): Promise<any> => {
   ).handle({
     identifier: { path: "json" },
     representation: {
-      metadata: new RepresentationMetadata("json"),
+      metadata: new RepresentationMetadata("application/json"),
       data: inputStream,
       binary: false,
     },
@@ -85,7 +85,7 @@ describe("JsonToRdfConverter", function () {
       ).handle({
         identifier: { path: "csv" },
         representation: {
-          metadata: new RepresentationMetadata("csv"),
+          metadata: new RepresentationMetadata("text/csv"),
           data: guardedStreamFrom(
             await fs.readFile("./test/movies/movies.csv")
           ),
