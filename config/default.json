@@ -1,14 +1,14 @@
 
 {
   "@context": [ 
-    "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml/^0.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@rmlio/solid-rml-store/^0.0.0/components/context.jsonld",
     {
-      "solid-store-rml": "urn:solid-store-rml:default"
+      "solid-rml-store": "urn:solid-rml-store:default"
     }
   ],
   "@graph": [
     {
-      "@id": "urn:solid-store-rml:default:AnyToRdfConverter",
+      "@id": "solid-rml-store:AnyToRdfConverter",
       "@type": "AnyToRdfConverter"
     }
   ]
