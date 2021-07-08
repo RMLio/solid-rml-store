@@ -1,5 +1,5 @@
 {
-  "name": "solid-store-rml",
+  "name": "@rmlio/solid-rml-store",
   "version": "0.0.1",
   "description": "Convert any representation to RDF",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.ilabt.imec.be/KNoWS/solid-store-rml.git"
+    "url": "https://github.com/RMLio/solid-rml-store.git"
   },
   "author": "Friedrich Vandenberghe",
   "license": "MIT",

@@ -1,13 +1,13 @@
-# solid-store-rml
+# Solid RML Store
 
-This repository handles RML-based operations, achieved through the usage of [rml.io](https://rml.io/).
+This Solid store allows you to generate RDF through the use of RML rules.
 
 ## How to use
 
 First install this repository as a dependency:
 
 ```bash
-$ npm i git+https://gitlab.ilabt.imec.be/KNoWS/solid-store-rml.git
+$ npm i @rmlio/solid-rml-store
 ```
 
 Then add the following lines to your config:
@@ -25,19 +25,19 @@ Then add the following lines to your config:
 "@graph": [
     {
       "@id": "solid-store-rml:AnyToRdfConverter",
-      "JsonToRdfConverter:_rmlRulesPath": [path to the rules file],
-      "JsonToRdfConverter:_rmlmapperPath": [path to the jar]
+      "AnyToRdfConverter:_rmlRulesPath": [path to the rules file],
+      "AnyToRdfConverter:_rmlmapperPath": [path to the jar]
     },
 ]
 ```
 
-## any-to-rdf-converter
+## AnyToRdfConverter
 
-Converts an object to its RDF representation, according to the RML defined in a given rules file. The `content-type` defined in the representation's metadata is used to know the type of the input data, thus this can't be `undefined`.
+This converter converts an existing representation to its RDF representation, 
+according to the RML rules defined in a given file (`AnyToRdfConverter:_rmlRulesPath`). 
+The `content-type` defined in the representation's metadata is used to know the type of the input data, 
+thus this cannot be `undefined`.
 
-If the `rmlmapper.jar` isn't found at the given location, then the converter tries to download it to that location.  
-Beware that this jar is approx. 60MB, thus this download can take some time.
-
-## YARRRML
-
-The RML rules are generated from the structure defined in the `.yarrrml` file. See [the specification](https://rml.io/yarrrml/spec/) for more information on what each field entails. [Matey](https://rml.io/yarrrml/matey/) is also a tool which can be used to generate these rules.
+If the RMLMapper (`rmlmapper.jar`) is not found at the given location (`AnyToRdfConverter:_rmlmapperPath`),
+then the latest version is download to that location.
+Beware that this jar is approximately 60MB, thus this download can take some time.
