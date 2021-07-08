@@ -14,17 +14,17 @@ Then add the following lines to your config:
 
 ```json
 "@context": [
-    "https://linkedsoftwaredependencies.org/bundles/npm/solid-store-rml/^0.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@rmlio/solid-rml-store/^0.0.0/components/context.jsonld",
     {
-      "solid-store-rml": "urn:solid-store-rml:default"
+      "solid-rml-store": "urn:solid-rml-store:default"
     }
   ],
 "import": [
-    "files-ssr:config/default.json"
+    "files-rsrs:config/default.json"
   ],
 "@graph": [
     {
-      "@id": "solid-store-rml:AnyToRdfConverter",
+      "@id": "solid-rml-store:AnyToRdfConverter",
       "AnyToRdfConverter:_rmlRulesPath": [path to the rules file],
       "AnyToRdfConverter:_rmlmapperPath": [path to the jar]
     },
@@ -33,9 +33,9 @@ Then add the following lines to your config:
 
 ## AnyToRdfConverter
 
-This converter converts an existing representation to its RDF representation, 
-according to the RML rules defined in a given file (`AnyToRdfConverter:_rmlRulesPath`). 
-The `content-type` defined in the representation's metadata is used to know the type of the input data, 
+This converter converts an existing representation to its RDF representation,
+according to the RML rules defined in a given file (`AnyToRdfConverter:_rmlRulesPath`).
+The `content-type` defined in the representation's metadata is used to know the type of the input data,
 thus this cannot be `undefined`.
 
 If the RMLMapper (`rmlmapper.jar`) is not found at the given location (`AnyToRdfConverter:_rmlmapperPath`),
