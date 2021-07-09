@@ -3,7 +3,7 @@
   "@context": [ 
     "https://linkedsoftwaredependencies.org/bundles/npm/@rmlio/solid-rml-store/^0.0.0/components/context.jsonld",
     {
-      "solid-rml-store": "urn:solid-rml-store:default"
+      "solid-rml-store": "urn:solid-rml-store:default:"
     }
   ],
   "@graph": [
