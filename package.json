@@ -14,6 +14,9 @@
     "url": "https://github.com/RMLio/solid-rml-store.git"
   },
   "author": "Friedrich Vandenberghe",
+  "contributors": [
+    "Pieter Heyvaert (https://pieterheyvaert.com)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
@@ -26,11 +29,11 @@
     "chai-as-promised": "^7.1.1",
     "mocha": "^8.3.2",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.4",
+    "@solid/community-server": "^0.9.0"
   },
   "dependencies": {
     "@rmlio/rmlmapper-java-wrapper": "^2.0.0",
-    "@solid/community-server": "^0.9.0",
     "componentsjs-generator": "^2.4.0",
     "follow-redirects": "^1.14.1",
     "fs-extra": "^10.0.0"
