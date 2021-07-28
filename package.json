@@ -22,8 +22,6 @@
     "@tsconfig/node14": "^1.0.1",
     "@types/chai": "^4.2.15",
     "@types/chai-as-promised": "^7.1.4",
-    "@types/follow-redirects": "^1.13.0",
-    "@types/fs-extra": "^9.0.10",
     "@types/mocha": "^8.2.2",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
@@ -33,6 +31,8 @@
     "@solid/community-server": "^1.0.0-beta.1"
   },
   "dependencies": {
+    "@types/follow-redirects": "^1.13.0",
+    "@types/fs-extra": "^9.0.10",
     "@rmlio/rmlmapper-java-wrapper": "^2.0.0",
     "componentsjs-generator": "^2.4.0",
     "follow-redirects": "^1.14.1",
