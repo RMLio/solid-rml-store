@@ -29,6 +29,7 @@ const convertJsonToRDF = async (input: any): Promise<any> => {
       metadata: new RepresentationMetadata("application/json"),
       data: inputStream,
       binary: false,
+      isEmpty: false
     },
     preferences: {},
   });
@@ -90,6 +91,7 @@ describe("JsonToRdfConverter", function () {
             await fs.readFile("./test/movies/movies.csv")
           ),
           binary: false,
+          isEmpty: false
         },
         preferences: {},
       });
@@ -134,6 +136,7 @@ describe("JsonToRdfConverter", function () {
             metadata: new RepresentationMetadata(undefined),
             data: guardedStreamFrom(""),
             binary: false,
+            isEmpty: false
           },
           preferences: {},
         })
@@ -153,6 +156,7 @@ describe("JsonToRdfConverter", function () {
             metadata: new RepresentationMetadata("json"),
             data: guardedStreamFrom(""),
             binary: false,
+            isEmpty: false
           },
           preferences: {},
         })

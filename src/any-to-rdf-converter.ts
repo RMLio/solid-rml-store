@@ -1,4 +1,5 @@
 import {
+  BaseTypedRepresentationConverter,
   BasicRepresentation,
   InternalServerError,
   NotFoundHttpError,
@@ -23,7 +24,7 @@ const RMLMAPPER_LATEST = {
 const getSourceName = (contentType: string) =>
   `data.${contentType.split("/")[1]}`;
 
-export class AnyToRdfConverter extends TypedRepresentationConverter {
+export class AnyToRdfConverter extends BaseTypedRepresentationConverter {
   private rmlRulesPath: string;
   private rmlmapperPath: string;
 
@@ -46,7 +47,7 @@ export class AnyToRdfConverter extends TypedRepresentationConverter {
     let rml;
     try {
       rml = await fs.readFile(this.rmlRulesPath, "utf-8");
-    } catch (error) {
+    } catch (error: any) {
       if (error.code === "ENOENT")
         throw new InternalServerError("RML file is not found");
       else throw error;
@@ -61,7 +62,7 @@ export class AnyToRdfConverter extends TypedRepresentationConverter {
         generateMetadata: false,
         serialization: "turtle",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (error.toString() === FILE_NOT_FOUND) {
         await this._download();
         result = await wrapper.execute(rml, {

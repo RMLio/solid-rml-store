@@ -28,7 +28,7 @@
     "mocha": "^8.3.2",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.4",
-    "@solid/community-server": "^1.0.0-beta.1"
+    "@solid/community-server": "^3.0.0"
   },
   "dependencies": {
     "@types/follow-redirects": "^1.13.0",
