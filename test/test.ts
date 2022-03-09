@@ -17,7 +17,6 @@ chai.use(chaiAsPromised);
  * Converts a JSON input to RDF and converts the stream to string.
  * @param input - JSON to convert to RDF.
  * @param converter - AnyToRdfConverter you want to reuse. If not provided a new one is created.
- * @param cache - Use cache (optional, default is false).
  * @returns Converted input in string format.
  */
 const convertJsonToRDF = async (input: any, converter?: AnyToRdfConverter): Promise<any> => {

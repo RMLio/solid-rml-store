@@ -105,6 +105,10 @@ export class AnyToRdfConverter extends BaseTypedRepresentationConverter {
     );
   }
 
+  /**
+   * Get RDF from the cache.
+   * @param data - The data to use to determine the hash for the caching.
+   */
   _getRDFFromCache(data: string) {
     if (this.cache) {
       const hash: string = crypto.createHash('md5').update(data).digest("hex");
@@ -125,6 +129,11 @@ export class AnyToRdfConverter extends BaseTypedRepresentationConverter {
     return null;
   }
 
+  /**
+   * Store RDF in the cache.
+   * @param data - The data that is used to determine to hash for caching.
+   * @param rdf - The RDF that is stored.
+   */
   _setRDFinCache(data: string, rdf: string) {
     if (this.cache) {
       const hash: string = crypto.createHash('md5').update(data).digest("hex");
@@ -132,6 +141,10 @@ export class AnyToRdfConverter extends BaseTypedRepresentationConverter {
     }
   }
 
+  /**
+   * This method removes RDF from the cache that hasn't been used in a while.
+   * This is based on this.cacheRetention.
+   */
   _cleanUpCache() {
     const now = (new Date()).getTime();
     // @ts-ignore
@@ -152,6 +165,9 @@ export class AnyToRdfConverter extends BaseTypedRepresentationConverter {
     });
   }
 
+  /**
+   * This method stops the automatic clean up of the cache.
+   */
   stopCacheCleanUps() {
     if (this.intervalID) {
       clearInterval(this.intervalID);
