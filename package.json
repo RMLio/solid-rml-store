@@ -1,6 +1,6 @@
 {
   "name": "@rmlio/solid-rml-store",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Convert any representation to RDF",
   "scripts": {
     "build": "npm run build:ts && npm run build:components",
@@ -19,7 +19,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@solid/community-server": "^3.0.0",
+    "@solid/community-server": "^4.0.0",
     "@tsconfig/node14": "^1.0.1",
     "@types/chai": "^4.2.15",
     "@types/chai-as-promised": "^7.1.4",

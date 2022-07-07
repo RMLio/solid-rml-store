@@ -187,7 +187,7 @@ describe("JsonToRdfConverter", function () {
         ).handle({
           identifier: { path: "json" },
           representation: {
-            metadata: new RepresentationMetadata("json"),
+            metadata: new RepresentationMetadata('application/json'),
             data: guardedStreamFrom(""),
             binary: false,
             isEmpty: false
