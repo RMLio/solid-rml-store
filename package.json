@@ -1,6 +1,6 @@
 {
   "name": "@rmlio/solid-rml-store",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Convert any representation to RDF",
   "scripts": {
     "build": "npm run build:ts && npm run build:components",
