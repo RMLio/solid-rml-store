@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [0.4.0]
+
 ### Changed
 - Use CSS v6 instead of v5
 
@@ -15,3 +17,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Use CSS v5 instead of v4
 
+[0.4.0]: https://github.com/RMLio/solid-rml-store/releases/tag/v0.4.0
